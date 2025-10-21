@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat ulang tahun Praskansa1tp 🎂🎉</title>
+    
+    <!-- Google Fonts: Dancing Script & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABEL WARNA & FONT (GANTI DI SINI UNTUK KUSTOMISASI CEPAT) --- */
+        :root {
+            --pink-pastel: #fde2e4;
+            --ungu-muda: #e2cefc;
+            --putih: #ffffff;
+            --pink-gelap: #d63384;
+            --font-utama: 'Poppins', sans-serif;
+            --font-judul: 'Dancing Script', cursive;
+        }
+
+        /* --- GAYA GLOBAL --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-utama);
+            background: linear-gradient(135deg, var(--pink-pastel), var(--ungu-muda));
+            color: #333;
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        header h1 {
+            font-family: var(--font-judul);
+            font-size: 4rem;
+            color: var(--pink-gelap);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* --- SLIDESHOW KONTAINER UTAMA --- */
+        main {
+            flex-grow: 1; /* Memastikan konten utama mengisi ruang tersisa */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- SLIDE (GAMBAR & DESKRIPSI) --- */
+        .slide {
+            display: none; /* Sembunyikan semua slide */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeEffect 1.5s; /* Durasi animasi fade */
+        }
+
+        .slide img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .slide-caption {
+            font-family: var(--font-judul);
+            font-size: 1.8rem;
+            text-align: center;
+            color: var(--pink-gelap);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .credit {
+            font-family: var(--font-judul);
+            font-size: 1.2rem;
+            color: var(--pink-gelap);
+            margin-top: 20px;
+        }
+
+        /* --- TOMBOL WHATSAPP --- */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-btn span {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* --- TOMBOL MUSIK --- */
+        .music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--pink-gelap);
+            color: var(--putih);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            background-color: #b02e5e;
+        }
+
+        /* --- ANIMASI HATI JATUH --- */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Agar tidak mengganggu interaksi */
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(214, 51, 132, 0.7); /* Warna hati dengan transparansi */
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+
+        /* --- KEYFRAMES ANIMASI --- */
+        @keyframes fadeEffect {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        /* --- RESPONSIVITAS --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 3rem; }
+            .slide-caption { font-size: 1.4rem; }
+            .slideshow-container { margin: 0 10px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Kontainer untuk animasi hati jatuh -->
+    <div class="hearts-container" id="hearts-container"></div>
+
+    <!-- Header Judul -->
+    <header>
+        <h1>Selamat ulang tahun Praskansa1tp 🎂🎉</h1>
+    </header>
+
+    <!-- Konten Utama: Slideshow -->
+    <main>
+        <div class="slideshow-container">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="https://raw.githubusercontent.com/praskansa1tp-star/musikku/main/Gambar%20WhatsApp%202025-10-19%20pukul%2011.30.24_7589e055.jpg" alt="Pantai">
+                <p class="slide-caption">HUT GUDEP SMK NEGERI 1 TANJUNG PANDAN KE-35</p>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="https://raw.githubusercontent.com/praskansa1tp-star/musikku/main/poto%20(1).JPG" alt="Hujan">
+                <p class="slide-caption">HUT GUDEP SMK NEGERI 1 TANJUNG PANDAN KE-35</p>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="https://raw.githubusercontent.com/praskansa1tp-star/musikku/main/poto%20(2).JPG" alt="Kafe">
+                <p class="slide-caption">HUT GUDEP SMK NEGERI 1 TANJUNG PANDAN KE-35</p>
+            </div>
+            <!-- Slide 4 -->
+            <div class="slide">
+                <img src="https://raw.githubusercontent.com/praskansa1tp-star/musikku/main/poto%20(3).jpg" alt="Film">
+                <p class="slide-caption">HUT GUDEP SMK NEGERI 1 TANJUNG PANDAN KE-35</p>
+            </div>
+            <!-- Slide 5 -->
+            <div class="slide">
+                <img src="https://raw.githubusercontent.com/praskansa1tp-star/musikku/main/poto%20(4).jpg" alt="Ulang Tahun">
+                <p class="slide-caption">HUT GUDEP SMK NEGERI 1 TANJUNG PANDAN KE-35</p>
+            </div>
+            <!-- Slide 6 -->
+            <div class="slide">
+                <img src="https://raw.githubusercontent.com/praskansa1tp-star/musikku/main/poto%20(5).jpg" alt="Pegunungan">
+                <p class="slide-caption">HUT GUDEP SMK NEGERI 1 TANJUNG PANDAN KE-35</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer: Tombol WhatsApp & Credit -->
+    <footer>
+        <!-- GANTI LINK WHATSAPP DI BAWAH INI -->
+        <a href="https://wa.me/6281234567890?text=Hai%20sayang%20%F0%9F%92%96" class="whatsapp-btn" target="_blank">
+            <span>💌</span> Kirim Pesan ke Aku
+        </a>
+        <p class="credit">Dibuat dengan sepenuh hati  oleh Dimas Januardi 🌟</p>
+    </footer>
+
+    <!-- Tombol Kontrol Musik -->
+    <div class="music-toggle" id="music-toggle">🔇</div>
+
+    <!-- Audio Musik (Autoplay) -->
+    <!-- GANTI SRC LAGU DI SINI -->
+<audio id="background-music" loop autoplay>
+  <source src="https://raw.githubusercontent.com/praskansa1tp-star/musikku/main/Jamrud%20-%20Selamat%20Ulang%20Tahun%20(Official%20Lyric%20Video).mp3" type="audio/mpeg">
+  Browser Anda tidak mendukung tag audio.
+</audio>
+
+
+
+
+    <script>
+        // --- SLIDESHOW LOGIC ---
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("slide");
+
+        function showSlides() {
+            // Sembunyikan semua slide
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            // Tampilkan slide berikutnya
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "flex";
+            
+            // Ganti setiap 5 detik
+            setTimeout(showSlides, 5000);
+        }
+
+        // Jalankan slideshow saat halaman dimuat
+        showSlides();
+
+        // --- MUSIK LOGIC ---
+        const music = document.getElementById('background-music');
+        const musicToggleBtn = document.getElementById('music-toggle');
+        let isMusicPlaying = false;
+
+        // Fungsi untuk mencoba memutar musik (banyak browser memblok autoplay)
+        function attemptPlay() {
+            music.play().then(() => {
+                isMusicPlaying = true;
+                musicToggleBtn.textContent = '🔊'; // Ikon speaker on
+            }).catch(error => {
+                console.log("Autoplay diblokir browser. User harus berinteraksi dulu.");
+                musicToggleBtn.textContent = '🔇'; // Ikon speaker off
+            });
+        }
+
+        // Coba autoplay saat halaman dimuat
+        window.addEventListener('load', attemptPlay);
+
+        // Event listener untuk tombol mute/unmute
+        musicToggleBtn.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                music.pause();
+                musicToggleBtn.textContent = '🔇';
+                isMusicPlaying = false;
+            } else {
+                music.play();
+                musicToggleBtn.textContent = '🔊';
+                isMusicPlaying = true;
+            }
+        });
+        // --- ANIMASI HATI JATUH LOGIC ---
+        const heartsContainer = document.getElementById('hearts-container');
+        const heartSymbols = ['🎈', '🎉', '🎁', '🎊', '🍰'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            
+            // Posisi awal random di sumbu X
+            heart.style.left = Math.random() * 100 + '%';
+            
+            // Durasi animasi random
+            const duration = Math.random() * 3 + 5; // antara 5-8 detik
+            heart.style.animationDuration = duration + 's';
+            
+            // Ukuran hati random
+            const size = Math.random() * 20 + 10; // antara 10-30px
+            heart.style.fontSize = size + 'px';
+
+            heartsContainer.appendChild(heart);
+
+            // Hapus elemen hati setelah animasi selesai untuk mencegah memory leak
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Buat hati baru setiap 300 milidetik
+        setInterval(createHeart, 300);
+
+    </script>
+</body>
+</html>
