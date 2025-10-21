@@ -111,30 +111,33 @@
             margin-top: 20px;
         }
 
-        /* --- TOMBOL WHATSAPP --- */
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: #25D366;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
+/* --- TOMBOL INSTAGRAM --- */
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(221, 42, 123, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .whatsapp-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
-        }
+.instagram-btn img {
+    width: 25px;
+    height: 25px;
+    border-radius: 6px;
+}
 
-        .whatsapp-btn span {
-            margin-right: 10px;
-            font-size: 1.3rem;
-        }
+.instagram-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(221, 42, 123, 0.6);
+}
 
         /* --- TOMBOL MUSIK --- */
         .music-toggle {
@@ -251,12 +254,13 @@
         </div>
     </main>
 
-    <!-- Footer: Tombol WhatsApp & Credit -->
-    <footer>
-        <!-- GANTI LINK WHATSAPP DI BAWAH INI -->
-        <a href="https://wa.me/6283155568337?text=selamat%20ulangtahun%20%F0%9F%92%96" class="whatsapp-btn" target="_blank">
-            <span>💌</span> Kirim Pesan ke Aku
-        </a>
+    <!-- Footer: Tombol Instagram & Credit -->
+<footer>
+    <!-- TOMBOL INSTAGRAM -->
+    <a href="https://www.instagram.com/praskansatp_09_10/" class="instagram-btn" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram Icon">
+        Kunjungi Instagram Kami
+    </a>
         <p class="credit">Dibuat dengan sepenuh hati  oleh Dimas Januardi 🌟</p>
     </footer>
 
@@ -359,6 +363,4 @@
 
     </script>
 </body>
-
 </html>
-
